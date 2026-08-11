@@ -1,4 +1,6 @@
-CC = gcc
+prog2: prog2.c
+	gcc prog2.c -o prog2prog2: prog2.c
+	gcc prog2.c -o prog2CC = gcc
 CFLAGS = -Wall -g
 
 prog1: prog1.c
