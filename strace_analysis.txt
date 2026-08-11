@@ -1,0 +1,14 @@
+System Call Analysis: cat sample.txt
+
+execve() starts the cat program.
+openat() opens sample.txt in read-only mode.
+read() reads the text from sample.txt.
+write() sends the text to the terminal.
+close() closes sample.txt.
+exit_group() terminates the cat process.
+
+Kernel services involved:
+Process Management: execve(), exit_group()
+File Management: openat(), close()
+File I/O Service: read(), write()
+Memory Management: brk(), mmap()
