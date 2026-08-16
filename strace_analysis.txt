@@ -1,14 +1,24 @@
-System Call Analysis: cat sample.txt
+STRACE SYSTEM CALL ANALYSIS
 
-execve() starts the cat program.
-openat() opens sample.txt in read-only mode.
-read() reads the text from sample.txt.
-write() sends the text to the terminal.
-close() closes sample.txt.
-exit_group() terminates the cat process.
+Command:
+strace -e trace=openat,read,write,close cat sample.txt
 
-Kernel services involved:
-Process Management: execve(), exit_group()
-File Management: openat(), close()
-File I/O Service: read(), write()
-Memory Management: brk(), mmap()
+System Call Analysis:
+
+openat() - Opens sample.txt for reading.
+read() - Reads the contents of the file.
+write() - Displays the file contents on the terminal.
+read() = 0 - Indicates the end of the file.
+close() - Closes the opened file.
+
+Kernel Services:
+openat() -> File Management
+read() -> File I/O
+write() -> I/O Management
+close() -> File Management
+
+Conclusion:
+The strace utility traces the system calls made by the cat command.
+The cat program requests services from the Linux kernel through
+system calls. The kernel opens the file, reads its contents,
+writes the contents to the terminal, and finally closes the file.
