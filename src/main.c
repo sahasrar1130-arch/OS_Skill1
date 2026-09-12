@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "input.h"
+#include "parser.h"
+#include "process.h"
 
 int main()
 {
@@ -28,9 +30,15 @@ int main()
             break;
         }
 
-        printf("You entered: %s\n", command);
+        char **tokens = parse_line(command);
 
-        free(command);
+if (tokens[0] != NULL)
+{
+    execute(tokens);
+}
+
+free_tokens(tokens);
+free(command);
     }
 
     return 0;
